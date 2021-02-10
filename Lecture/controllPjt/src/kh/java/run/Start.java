@@ -1,17 +1,13 @@
 package kh.java.run;
 
-import kh.java.func.StarTest;
+import kh.java.func.LoopTest;
 
 public class Start {
 
 	public static void main(String[] args) {
+		LoopTest lt = new LoopTest();
 
-		StarTest st = new StarTest();
-		st.star13();
-
-		/*StarTest2 st2 = new StarTest2();
-		st2.star21();*/
-
+		lt.loop1();
 	}
 
 }
