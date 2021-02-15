@@ -112,7 +112,6 @@ public class RandomTest {
 		Random r = new Random();
 
 		boolean isFinish = true;
-		boolean isFirst = true;
 		int answer = 0; // 컴퓨터 답
 		int myAnswer = 0; // 유저 정답 입력
 		int highScore = 0; // 최고 점수
@@ -138,11 +137,10 @@ public class RandomTest {
 					myAnswer = sc.nextInt();
 
 					if (myAnswer == answer) { // 정답을 맞춘 경우
-						if (isFirst) {// 첫 판
-							highScore = cnt; // 최고점수 갱신
-							isFirst = false;
-						} else if (highScore > cnt) // 최고점수 갱신
+
+						if (highScore > cnt || highScore == 0) { // 최고점수 갱신
 							highScore = cnt;
+						}
 
 						System.out.println("<< 정답 >>");
 						break;
@@ -157,7 +155,7 @@ public class RandomTest {
 				break;
 
 			case 2: // 점수 확인
-				if (isFirst) // 한번도 안한 경우
+				if (highScore == 0) // 한번도 안한 경우
 					System.out.println("아직 기록이 없습니다.");
 				else // 한판이라도 한 경우
 					System.out.println("현재 최고 기록은 " + highScore + "회 입니다.");
@@ -175,6 +173,7 @@ public class RandomTest {
 
 		} // while 종료
 		sc.close();
+
 	}
 
 	// Baskin Robbins 31 Game / 1 ~ 31될 떄까지 / 한번에 1~3 입력 가능
@@ -210,10 +209,11 @@ public class RandomTest {
 					user = sc.nextInt();
 
 					if (user == 1 || user == 2 || user == 3) { // 1~3
+
 						for (int i = 0; i < user; i++) {
 							cnt++;
 
-							if (cnt >= 31)
+							if (cnt == 31)
 								break;
 
 							System.out.println(cnt + "!");
@@ -224,7 +224,7 @@ public class RandomTest {
 						continue;
 					}
 
-					if (cnt >= 31) { // 패배
+					if (cnt == 31) { // 패배
 						System.out.println("31!");
 						System.out.println("패배!!!!!");
 						lose++;
@@ -239,14 +239,14 @@ public class RandomTest {
 						for (int i = 0; i < computer; i++) {
 							cnt++;
 
-							if (cnt >= 31)
+							if (cnt == 31)
 								break;
 
 							System.out.println(cnt + "!");
 						}
 					}
 
-					if (cnt >= 31) { // 승리
+					if (cnt == 31) { // 승리
 						System.out.println("31!");
 						System.out.println("승리ㅠㅠ");
 						win++;
