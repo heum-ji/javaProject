@@ -294,4 +294,133 @@ public class ArrayTest {
 		} // 전체 Lotto 게임 종료
 		sc.close();
 	}
+
+	public void arrayTest() {
+
+		Scanner sc = new Scanner(System.in);
+		boolean[] room = new boolean[10]; // 방 10개
+		boolean isFinish = true;
+
+		while (isFinish) {
+
+			System.out.println("모텔 관리 프로그램 v1.0");
+			System.out.printf("1.입실\t2.퇴실\t3.방보기\t4.종료\n선택 > ");
+			int sel = sc.nextInt();
+
+			switch (sel) {
+			case 1:
+				// 입실 시작
+				System.out.print("몇번방에 입실하시겠습니까?");
+				int inRoomSel = sc.nextInt(); // 방 선택
+
+				if (inRoomSel >= 1 && inRoomSel <= 10) { // 정상적으로 선택하는 경우
+
+					if (room[inRoomSel - 1]) { // 이미 입실한 경우
+						System.out.println(inRoomSel + "번방은 현재 손님이 있습니다.");
+					} else { // 빈 방
+						System.out.println(inRoomSel + "번방에 입실하셨습니다.");
+						room[inRoomSel - 1] = true;
+					}
+				} else { // 비정상 선택
+					System.out.println("1번 ~ 10번의 방이 있습니다.");
+				} // 입실 끝
+				break;
+
+			case 2:
+				// 퇴실 시작
+				System.out.print("몇번방에서 퇴실하시겠습니까?");
+				int outRoomSel = sc.nextInt(); // 방 선택
+
+				if (outRoomSel >= 1 && outRoomSel <= 10) { // 정상적으로 선택하는 경우
+
+					if (room[outRoomSel - 1]) { // 이미 입실한 경우
+						System.out.println(outRoomSel + "번방에서 퇴실하셨습니다.");
+						room[outRoomSel - 1] = false;
+					} else { // 빈 방
+						System.out.println(outRoomSel + "번방은 현재 빈 방입니다.");
+					}
+				} else {
+					System.out.println("1번 ~ 10번의 방이 있습니다.");
+				} // 퇴실끝
+				break;
+
+			case 3:
+				for (int i = 0; i < room.length; i++) {
+					if (!room[i]) { // 빈 방
+						System.out.println((i + 1) + "번방이 현재 비어있습니다.");
+					} else { // 손님이 있는 방
+						System.out.println((i + 1) + "번방에는 현재 손님이 있습니다.");
+					}
+				}
+				break;
+
+			case 4:
+				System.out.println("프로그램을 종료합니다.");
+				isFinish = false;
+				break;
+
+			default:
+				System.out.println("잘못 선택 하셨습니다.");
+				break;
+			} // 게임 선택 종료
+		} // 전체 프로그램 종료
+		sc.close();
+	}
+
+	public void arrayCopy() {
+		int[] arr1 = { 1, 2, 3, 4, 5 };
+		// 얕은복사(주소값만 복사해서 같은 배열을 참조하고 있는 상태
+		int[] arr2 = arr1;
+		// 깊은 복사(새 배열을 만들고 arr1의 값을 복사해오는 상태
+		int[] arr3 = arr1.clone();
+		int[] arr4 = new int[5];
+		System.arraycopy(arr1, 0, arr4, 0, 5);
+
+		for (int i = 0; i < arr1.length; i++) {
+			System.out.print(arr1[i] + " ");
+		}
+		System.out.println();
+
+		for (int i = 0; i < arr2.length; i++) {
+			System.out.print(arr2[i] + " ");
+
+		}
+		System.out.println();
+
+		for (int i = 0; i < arr3.length; i++) {
+			System.out.print(arr3[i] + " ");
+
+		}
+		System.out.println();
+	}
+
+	public void testArray() {
+		int[][] arr = new int[2][3];
+		int cnt = 1;
+
+		for (int i = 0; i < arr.length; i++) {
+
+			for (int j = 0; j < arr[i].length; j++) {
+				arr[i][j] = cnt;
+				cnt += 2;
+				System.out.print(arr[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+	}
+
+	public void exam11() {
+		int[][] arr = new int[5][5];
+		int cnt = 0;
+
+		for (int i = 0; i < arr.length; i++) {
+
+			for (int j = 0; j < arr[i].length; j++) {
+				arr[i][j] = ++cnt;
+				System.out.printf("%02d ", arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
 }
