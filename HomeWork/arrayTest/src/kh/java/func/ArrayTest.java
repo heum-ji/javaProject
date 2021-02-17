@@ -89,7 +89,6 @@ public class ArrayTest {
 					arr[i][j] = ++cnt;
 				}
 			}
-
 		}
 
 		// 출력
@@ -120,7 +119,6 @@ public class ArrayTest {
 			} else { // 비정상
 				System.out.println("반드시 1~10 사이의 정수를 입력해야 합니다.");
 			}
-
 		}
 
 		// 열 입력
