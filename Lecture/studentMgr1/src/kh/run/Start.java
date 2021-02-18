@@ -4,8 +4,8 @@ import kh.controller.StudentMgr;
 
 public class Start {
 
-    public static void main(String[] args) {
-	StudentMgr sm = new StudentMgr();
-	sm.main();
-    }
+	public static void main(String[] args) {
+		StudentMgr sm = new StudentMgr();
+		sm.main();
+	}
 }
