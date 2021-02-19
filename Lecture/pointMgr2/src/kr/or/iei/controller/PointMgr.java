@@ -15,6 +15,9 @@ public class PointMgr {
 	int gIndex;
 	int vIndex;
 
+	// 과제
+	String tempGrade; // 임시등급 저장
+
 	public PointMgr() {
 		sc = new Scanner(System.in);
 		s = new Silver[10];
@@ -23,6 +26,7 @@ public class PointMgr {
 		index = 0;
 		gIndex = 0;
 		vIndex = 0;
+		tempGrade = null;
 	}
 
 	public void main() {
@@ -33,6 +37,7 @@ public class PointMgr {
 			System.out.println("3. 회원 1명 조회");
 			System.out.println("4. 회원 정보 수정");
 			System.out.println("5. 회원 삭제");
+			System.out.println("6. 테스트");
 			System.out.println("0. 프로그램 종료");
 			System.out.print("선택 > ");
 
@@ -51,6 +56,9 @@ public class PointMgr {
 				break;
 			case 5:
 				deleteMember();
+				break;
+			case 6: // test
+				test();
 				break;
 			case 0:
 				System.out.println("Bye~");
@@ -168,32 +176,63 @@ public class PointMgr {
 		}
 	}
 
+	// 과제 - searchMember 메서드 gold, vip 추가하기
 	public int searchMember(String searchName) {
-
+		// silver
 		for (int i = 0; i < index; i++) {
 			if (s[i].getName().equals(searchName)) {
+				tempGrade = "silver"; // 임시 등급 저장
 				return i;
 			}
 		}
+		// gold
+		for (int i = 0; i < gIndex; i++) {
+			if (g[i].getName().equals(searchName)) {
+				tempGrade = "gold"; // 임시 등급 저장
+				return i;
+			}
+		}
+		// vip
+		for (int i = 0; i < vIndex; i++) {
+			if (v[i].getName().equals(searchName)) {
+				tempGrade = "vip"; // 임시 등급 저장
+				return i;
+			}
+		}
+		// 없는 경우
 		return -1;
 	}
 
-	public int searchMember(String searchName, String searchGrade) {
+	public void test() {
+		System.out.println("===== 서치 테스트 =====");
+		System.out.print("찾을 회원 이름 : ");
+		String searchName = sc.next();
 
-		// silver
-		if (searchGrade.equals("silver")) {
-			for (int i = 0; i < index; i++) {
-				if (s[i].getName().equals(searchName)) {
-					return i;
-				}
+		int searchIndex = searchMember(searchName);
+
+		if (searchIndex == -1) {
+			System.out.println("해당 회원은 없습니다.");
+		} else {
+			switch (tempGrade) {
+			case "silver":
+				System.out.println("등급 : " + tempGrade);
+				System.out.println("이름 : " + s[searchIndex].getName());
+				System.out.println("포인트 : " + s[searchIndex].getPoint());
+				System.out.println("보너스 : " + s[searchIndex].getBonus());
+				break;
+			case "gold":
+				System.out.println("등급 : " + tempGrade);
+				System.out.println("이름 : " + g[searchIndex].getName());
+				System.out.println("포인트 : " + g[searchIndex].getPoint());
+				System.out.println("보너스 : " + g[searchIndex].getBonus());
+				break;
+			case "vip":
+				System.out.println("등급 : " + tempGrade);
+				System.out.println("이름 : " + v[searchIndex].getName());
+				System.out.println("포인트 : " + v[searchIndex].getPoint());
+				System.out.println("보너스 : " + v[searchIndex].getBonus());
+				break;
 			}
-		} /*
-			 * else if (searchGrade.equals("gold")) { // gold for (int i = 0; i < gIndex;
-			 * i++) { if (g[i].getName().equals(searchName)) { return i; } } } else if
-			 * (searchGrade.equals("vip")) { // gold for (int i = 0; i < vIndex; i++) { if
-			 * (v[i].getName().equals(searchName)) { return i; } } }
-			 */
-		// 이름 없어요
-		return -1;
+		}
 	}
 }
