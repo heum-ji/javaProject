@@ -21,7 +21,7 @@ public class StudentController {
 
 			switch (sel) {
 			case 0:
-				System.out.println("Bye~!");
+				view.printMsg("Bye~");
 				return;
 			case 1:
 				s[index++] = view.insertMember();
@@ -30,23 +30,48 @@ public class StudentController {
 				view.printAllMember(s, index);
 				break;
 			case 3:
-				int searchIndex = searchIndex(view.inputName());
+				int searchIndex = searchStudent(view.inputName("조회"));
 
 				if (searchIndex != -1) { // 배열에 존재
-					view.printOneMember(s[searchIndex]);
+					view.printOneStudent(s[searchIndex]);
 				} else { // 배열에 없음
-					view.printString("해당 학생은 없습니다.");
+					view.printMsg("해당 학생은 없습니다.");
 				}
 				break;
 			case 4:
+				modifyStudent();
 				break;
 			case 5:
+				deleteStudent();
 				break;
 			}
 		}
 	}
 
-	public int searchIndex(String searchName) {
+	public void modifyStudent() {
+		int searchIndex = searchStudent(view.inputName("수정"));
+
+		if (searchIndex != -1) {
+			s[searchIndex] = view.modifyStudent();
+		} else {
+			view.printMsg("해당 학생은 없습니다.");
+		}
+	}
+
+	public void deleteStudent() {
+		int searchIndex = searchStudent(view.inputName("삭제"));
+
+		if (searchIndex != -1) {
+			for (int i = searchIndex; i < index - 1; i++) {
+				s[i] = s[i + 1];
+			}
+			s[--index] = null;
+		} else {
+			view.printMsg("해당 학생은 없습니다.");
+		}
+	}
+
+	public int searchStudent(String searchName) {
 		for (int i = 0; i < index; i++) {
 			if (s[i].getName().equals(searchName)) {
 				return i;

@@ -35,8 +35,7 @@ public class StudentView {
 		sc.nextLine();
 		String addr = sc.nextLine();
 
-		Student s = new Student(name, age, addr);
-		return s;
+		return new Student(name, age, addr);
 	}
 
 	public void printAllMember(Student[] s, int index) {
@@ -48,7 +47,7 @@ public class StudentView {
 		}
 	}
 
-	public void printOneMember(Student s) {
+	public void printOneStudent(Student s) {
 		System.out.println("===== 학생 1명 조회 =====");
 		System.out.println("이름 : " + s.getName());
 		System.out.println("나이 : " + s.getAge());
@@ -56,13 +55,25 @@ public class StudentView {
 		System.out.println("학생 조회 완료");
 	}
 
-	public String inputName() {
-		System.out.print("찾을 학생 이름 : ");
+	public Student modifyStudent() {
+		System.out.print("수정할 학생 이름 : ");
+		String mName = sc.next();
+		System.out.print("수정할 학생 나이 : ");
+		int mAge = sc.nextInt();
+		System.out.print("수정할 학생 주소 : ");
+		sc.nextLine();
+		String mAddr = sc.nextLine();
+
+		return new Student(mName, mAge, mAddr);
+	}
+
+	public String inputName(String msg) {
+		System.out.print(msg + "할 학생 이름 : ");
 		return sc.next();
 	}
 
-	public void printString(String printStr) {
-		System.out.println(printStr);
+	public void printMsg(String msg) {
+		System.out.println(msg);
 	}
 
 }
