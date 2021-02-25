@@ -13,6 +13,14 @@ public abstract class Product {
 		super();
 	}
 
+	public Product(String name, String color, int stock, int price) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.stock = stock;
+		this.price = price;
+	}
+	
 	public Product(String name, String color, String code, int stock, int price, int productNum) {
 		super();
 		this.name = name;
@@ -79,7 +87,4 @@ public abstract class Product {
 	public void setBuyCnt(int buyCnt) {
 		this.buyCnt = buyCnt;
 	}
-
-	public abstract int getDiscount();
-
 }

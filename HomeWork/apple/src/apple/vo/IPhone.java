@@ -9,9 +9,9 @@ public class IPhone extends Product {
 	public IPhone(String name, String color, String code, int stock, int price, int productNum) {
 		super(name, color, code, stock, price, productNum);
 	}
-
-	@Override
-	public int getDiscount() {
-		return 0;
+	
+	public IPhone(String name, String color, int stock, int price) {
+		super(name, color, stock, price);
+		// TODO Auto-generated constructor stub
 	}
 }

@@ -10,8 +10,8 @@ public class IPad extends Product {
 		super(name, color, code, stock, price, productNum);
 	}
 
-	@Override
-	public int getDiscount() {
-		return 0;
+	public IPad(String name, String color, int stock, int price) {
+		super(name, color, stock, price);
+		// TODO Auto-generated constructor stub
 	}
 }
