@@ -18,8 +18,7 @@ public class AppleView {
 	/**
 	 * Customer
 	 */
-
-	public int showAppleStore() {
+	public int showAppleStoreMenu() {
 		System.out.println(" ===== Apple Store ===== ");
 		System.out.println("|\t 1. 직원    \t|");
 		System.out.println("|\t 2. 손님    \t|");
@@ -30,7 +29,7 @@ public class AppleView {
 		return (sc.nextInt());
 	}
 
-	public int showWelCome() {
+	public int showWelComeMenu() {
 		System.out.println(" ============ WelCome ========== ");
 		System.out.println("|\t 1. 쇼핑하기       \t\t|");
 		System.out.println("|\t 2. 장바구니       \t\t|");
@@ -42,7 +41,7 @@ public class AppleView {
 		return (sc.nextInt());
 	}
 
-	public int showShopping() {
+	public int showShoppingMenu() {
 		System.out.println(" =========== Shopping ========== ");
 		System.out.println("|\t 1. AppleWatch \t\t|");
 		System.out.println("|\t 2. IPad \t\t|");
@@ -239,9 +238,9 @@ public class AppleView {
 	}
 
 	/**
-	 * Manage
+	 * Staff
 	 */
-	public int Manager() {
+	public int showManageMenu() {
 		System.out.println(" =======관리 프로그램======= ");
 		System.out.println("|\t1.새 제품 등록\t|");
 		System.out.println("|\t2.현재 재고 현황\t|");
@@ -250,11 +249,11 @@ public class AppleView {
 		System.out.println("|\t0.뒤로 가기\t|");
 		System.out.println(" ======================= ");
 		System.out.print("선택 >> ");
-		int num = sc.nextInt();
-		return num;
+
+		return (sc.nextInt());
 	}
 
-	public int Register() {
+	public int showRegistMenu() {
 		System.out.println(" ===== Apple Store ===== ");
 		System.out.println("|\t1.아이폰 등록\t|");
 		System.out.println("|\t2.맥북 등록\t|");
@@ -263,8 +262,34 @@ public class AppleView {
 		System.out.println("|\t0.뒤로가기\t|");
 		System.out.println(" ======================= ");
 		System.out.print("선택 >> ");
-		int sel = sc.nextInt();
-		return sel;
+
+		return (sc.nextInt());
+	}
+
+	public int showModifyMenu() {
+		System.out.println(" ==어떤 제품의 재고를 변경하시겠습니까?== ");
+		System.out.println("|\t    1.아이폰                \t|");
+		System.out.println("|\t    2.맥북               \t|");
+		System.out.println("|\t    3.아이패드          \t|");
+		System.out.println("|\t    4.애플워치          \t|");
+		System.out.println("|\t    0.뒤로가기          \t|");
+		System.out.println(" =============================== ");
+		System.out.print("선택 >> ");
+
+		return (sc.nextInt());
+	}
+
+	public int deleteMenu() {
+		System.out.println(" =어떤 제품을 삭제하시겠습니까?= ");
+		System.out.println("|\t 1.아이폰  \t|");
+		System.out.println("|\t 2.맥 북   \t|");
+		System.out.println("|\t 3.아이패드  \t|");
+		System.out.println("|\t 4.애플워치  \t|");
+		System.out.println("|\t 0.뒤로가기  \t|");
+		System.out.println(" ======================= ");
+		System.out.print("선택 >> ");
+
+		return (sc.nextInt());
 	}
 
 	public void printAll(Product[][] p, int index, int iphone) {
@@ -310,19 +335,6 @@ public class AppleView {
 					+ p[watch][i].getStock() + "\t" + p[watch][i].getPrice());
 		}
 		System.out.println();
-	}
-
-	public int modify() {
-		System.out.println(" ==어떤 제품의 재고를 변경하시겠습니까?== ");
-		System.out.println("|\t    1.아이폰                \t|");
-		System.out.println("|\t    2.맥북               \t|");
-		System.out.println("|\t    3.아이패드          \t|");
-		System.out.println("|\t    4.애플워치          \t|");
-		System.out.println("|\t    0.뒤로가기          \t|");
-		System.out.println(" =============================== ");
-		System.out.print("선택 >> ");
-		int sel = sc.nextInt();
-		return sel;
 	}
 
 	public void modifyIphone(Product[][] p, int index, int iphone) {
@@ -395,19 +407,6 @@ public class AppleView {
 		int num = sc.nextInt();
 		p[watch][sel - 1].setStock(num);
 		System.out.println("변경 완료");
-	}
-
-	public int deleteMenu() {
-		System.out.println(" =어떤 제품을 삭제하시겠습니까?= ");
-		System.out.println("|\t 1.아이폰  \t|");
-		System.out.println("|\t 2.맥 북   \t|");
-		System.out.println("|\t 3.아이패드  \t|");
-		System.out.println("|\t 4.애플워치  \t|");
-		System.out.println("|\t 0.뒤로가기  \t|");
-		System.out.println(" ======================= ");
-		System.out.print("선택 >> ");
-		int sel = sc.nextInt();
-		return sel;
 	}
 
 	public int deleteIphone(Product[][] p, int index, int iphone) {

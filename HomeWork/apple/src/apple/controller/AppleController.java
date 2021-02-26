@@ -59,7 +59,7 @@ public class AppleController {
 	public void main() {
 
 		while (true) {
-			switch (view.showAppleStore()) { // 메인메뉴 반복
+			switch (view.showAppleStoreMenu()) { // 메인메뉴 반복
 			case 1: // 직원
 				staff();
 				break;
@@ -81,9 +81,9 @@ public class AppleController {
 		toManage = true;
 
 		while (toManage) { // manage 화면
-			switch (view.Manager()) {
+			switch (view.showManageMenu()) {
 			case 1: // Create
-				switch (view.Register()) {
+				switch (view.showRegistMenu()) {
 				case 1:
 					productStock[PHONE][phoneIndex++] = view.Iphone();
 					break;
@@ -111,7 +111,7 @@ public class AppleController {
 				view.printAll4(productStock, watchIndex, WATCH);
 				break;
 			case 3: // Update
-				switch (view.modify()) {
+				switch (view.showModifyMenu()) {
 				case 1: // 아이폰
 					view.modifyIphone(productStock, phoneIndex, PHONE);
 					break;
@@ -201,7 +201,7 @@ public class AppleController {
 		toWelcome = true;
 
 		while (toWelcome) {
-			switch (view.showWelCome()) { // Store 입장
+			switch (view.showWelComeMenu()) { // Store 입장
 			case 1: // Shopping
 
 				// 장바구니 체크
@@ -214,7 +214,7 @@ public class AppleController {
 				toShopping = true;
 
 				while (toShopping) {
-					switch (view.showShopping()) { // ShoppingList
+					switch (view.showShoppingMenu()) { // ShoppingList
 					case 1: // AppleWatch
 						view.printProductList(productStock[WATCH], watchIndex);
 
