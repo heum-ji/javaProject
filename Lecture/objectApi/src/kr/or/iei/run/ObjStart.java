@@ -13,7 +13,7 @@ public class ObjStart {
 		// sc.exam1();
 
 		ApiClass ac = new ApiClass();
-		ac.dDay();
+		ac.wrapper();
 	}
 
 }

@@ -58,8 +58,9 @@ public class ApiClass {
 	public void dDay() {
 		Scanner sc = new Scanner(System.in);
 
-		Calendar cal = Calendar.getInstance(); // 오늘 날짜
-		long today = cal.getTimeInMillis(); // 1960 ~ 오늘 날짜까지 ms초 환산
+		Calendar currentCal = Calendar.getInstance(); // 오늘 날짜용
+		Calendar dDayCal = Calendar.getInstance(); // Dday용
+		long today = currentCal.getTimeInMillis(); // 1960 ~ 오늘 날짜까지 ms초 환산
 
 		// 입력
 		System.out.println("========== D-Day계산기 ==========");
@@ -70,13 +71,13 @@ public class ApiClass {
 		System.out.print("D-Day [일] 입력 : ");
 		int inputDay = sc.nextInt();
 
-		cal.set(Calendar.YEAR, inputYear);
-		cal.set(Calendar.MONTH, inputMonth - 1);
-		cal.set(Calendar.DATE, inputDay);
-		long dday = cal.getTimeInMillis(); // 1960 ~ dday 날짜까지 ms초 환산
-		long time = dday - today; // 두 날짜 사이의 차이값(ms)
-		long d = time / 86400000; // ms -> day 변환
-		
+		dDayCal.set(Calendar.YEAR, inputYear);
+		dDayCal.set(Calendar.MONTH, inputMonth - 1);
+		dDayCal.set(Calendar.DATE, inputDay);
+		long dday = dDayCal.getTimeInMillis(); // 1960 ~ dday 날짜까지 ms초 환산
+		long time = dday / 1000 - today / 1000; // 두 날짜 사이의 차이값(ms)
+		long d = time / 86400; // ms -> day 변환
+
 		if (d == 0) { // D-Day
 			System.out.println("D-Day 입니다.");
 		} else if (d > 0) { // d-day
@@ -84,7 +85,7 @@ public class ApiClass {
 		} else if (d < 0) { // d-day
 			System.out.println(Math.abs(d) + "일 지났습니다.");
 		}
-		
+
 		sc.close();
 	}
 
@@ -115,7 +116,7 @@ public class ApiClass {
 		dDay.set(Calendar.MONTH, inputMonth - 1); // 컴퓨터 0 ~ 11 보정
 		dDay.set(Calendar.DATE, inputDay);
 		dDayString = dayFormat.format(dDay.getTime());
-		dTime = today.getTime() / 1000 - dDay.getTimeInMillis() / 1000; // ms -> s 처리
+		dTime = today.getTime() / 1000 - dDay.getTimeInMillis() / 1000; // ms -> s 보정
 
 		// 출력
 		System.out.println("오늘 날짜 : " + todayString);
@@ -135,4 +136,33 @@ public class ApiClass {
 		sc.close();
 	}
 
+	public void wrapper() {
+		// 정수형 변수 선언해서 10대입
+		int num = 10;
+		// wrapperClass로 정수형 10 대입
+		Integer num1 = new Integer(10);
+		System.out.println(num1.intValue());
+		// auto-boxing
+		Integer num2 = 10; // new Integer(10);
+		System.out.println(num2); // num2.intValue();
+
+		Character ch = 'a'; // new Character('a');
+		System.out.println(ch); // ch.charValue()
+
+		// String -> 기본 자료형 변환(char - charAt())
+		String str = "10";
+		System.out.println(str);
+		int no = Integer.parseInt(str); // String -> int 형으로 변환
+		System.out.println(no + 1);
+
+		// 기본 자료형 -> String 변환(char - toString())
+		double d1 = 11.1;
+		String str1 = Double.valueOf(d1).toString();
+		String str11 = String.valueOf(d1);
+		int no1 = 100;
+		String str2 = Integer.valueOf(no1).toString();
+		String str22 = String.valueOf(no1);
+		Character ch1 = 'a';
+		ch1.toString();
+	}
 }
