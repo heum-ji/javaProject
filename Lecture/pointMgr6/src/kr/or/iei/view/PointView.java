@@ -19,7 +19,7 @@ public class PointView {
 	}
 
 	public int showMenu() {
-		System.out.println("===== 회원 관리 프로그램 v6 =====");
+		System.out.println("\n===== 회원 관리 프로그램 v6 =====");
 		System.out.println("1. 회원 등록");
 		System.out.println("2. 전체 회원 출력");
 		System.out.println("3. 회원 정보 출력(1명)");
@@ -31,13 +31,13 @@ public class PointView {
 		return (sc.nextInt());
 	}
 
-	public Grade insertMember(String msg) {
+	public Grade getMember(String str) {
 		Grade member = null;
 		String grade = "";
-		System.out.println("\n===== 회원 등록 =====");
+		System.out.println("\n===== 회원 " + str + " =====");
 
 		while (true) { // 등급 거르기
-			System.out.print("등급 [silver/gold/vip/vvip] : ");
+			System.out.print(str + " 등급 [silver/gold/vip/vvip] : ");
 			grade = sc.next();
 
 			if (grade.equals("silver") || grade.equals("gold") || grade.equals("vip") || grade.equals("vvip")) {
@@ -47,9 +47,9 @@ public class PointView {
 			}
 		}
 
-		System.out.print("이름 : ");
+		System.out.print(str + " 이름 : ");
 		String name = sc.next();
-		System.out.print("포인트 : ");
+		System.out.print(str + " 포인트 : ");
 		int point = sc.nextInt();
 
 		if (grade.equals("silver")) {
@@ -61,8 +61,8 @@ public class PointView {
 		} else { // vvip
 			member = new Vvip(grade, name, point);
 		}
-		
-		System.out.println("등록 완료\n");
+
+		System.out.println(str + " 완료\n");
 		return member;
 	}
 
@@ -73,6 +73,16 @@ public class PointView {
 		for (int i = 0; i < members.size(); i++) {
 			System.out.println(members.get(i));
 		}
+	}
+
+	public void printOneMember(Grade member) {
+		System.out.println("등급\t이름\t포인트\t보너스");
+		System.out.println(member);
+	}
+
+	public String getName(String str) {
+		System.out.print(str + "할 이름 : ");
+		return sc.next();
 	}
 
 	public void printMsg(String msg) {

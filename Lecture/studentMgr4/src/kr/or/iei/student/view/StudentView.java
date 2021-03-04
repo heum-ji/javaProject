@@ -38,20 +38,31 @@ public class StudentView {
 		return new Student(name, age, addr);
 	}
 
-	public void printlnMsg(String msg) {
-		System.out.println(msg);
+	public String getName(String str) {
+		System.out.print(str + "할 학생 이름 : ");
+		return sc.next();
 	}
 
-	public void printMsg(String msg) {
-		System.out.print(msg);
+	public void printlnMsg(String msg) {
+		System.out.println(msg);
 	}
 
 	public void printAllStudent(ArrayList<Student> students) {
 		System.out.println("===== 학생 전체 조회 =====");
 		System.out.println("이름\t나이\t주소");
 
-		for (int i = 0; i < students.size(); i++) {
-			System.out.println(students.get(i));
+		// for (int i = 0; i < students.size(); i++) {
+		// System.out.println(students.get(i));
+		// }
+
+		for (Student s : students) {
+			System.out.println(s);
 		}
 	}
+
+	public void printOneStudent(Student student) {
+		System.out.println("이름\t나이\t주소");
+		System.out.println(student);
+	}
+
 }

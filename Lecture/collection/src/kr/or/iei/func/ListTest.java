@@ -68,4 +68,30 @@ public class ListTest {
 		list.clear();
 		System.out.println(list);
 	}
+
+	public void listTest3() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(50);
+		list.add(100);
+		list.add(333);
+		list.add(99);
+		list.add(12121);
+
+		// // 기존 for문
+		// for (int i = 0; i < list.size(); i++) {
+		// System.out.println(list.get(i));
+		// }
+
+		// for문 
+		for (int i = 0; i < list.size(); i++) {
+			Integer num = list.get(i);
+			System.out.println(num);
+		}
+
+		// foreach문 -> collection : list용 for문 // java 1.5부터 지원
+		for (Integer num : list) {
+			System.out.println(num);
+		}
+		//
+	}
 }
