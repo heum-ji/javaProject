@@ -23,16 +23,15 @@ public class PointController {
 				break;
 			case 2:
 				printAllMember();
-				// view.printAllMember(members);
 				break;
 			case 3:
-				// printOneMember();
+				printOneMember();
 				break;
 			case 4:
-				// modifyMember();
+				modifyMember();
 				break;
 			case 5:
-				// deleteMember();
+				deleteMember();
 				break;
 			case 0:
 				view.printMsg("Bye~!");
@@ -50,5 +49,39 @@ public class PointController {
 
 	public void printAllMember() {
 		view.printAllMember(members);
+	}
+
+	public void printOneMember() {
+		String name = view.getName("조회");
+		Grade member = members.get(name);
+		if (member != null) {
+			view.printOneMember(member);
+		} else {
+			view.printMsg("해당 멤버는 없습니다.");
+		}
+	}
+
+	public void modifyMember() {
+		String name = view.getName("수정");
+
+		if (members.containsKey(name)) {
+			members.remove(name);
+			Grade member = view.getMember("수정");
+			members.put(member.getName(), member);
+			view.printMsg("수정 완료");
+		} else {
+			view.printMsg("해당 멤버는 없습니다.");
+		}
+	}
+
+	public void deleteMember() {
+		String name = view.getName("삭제");
+
+		if (members.containsKey(name)) {
+			members.remove(name);
+			view.printMsg("삭제 완료");
+		} else {
+			view.printMsg("해당 멤버는 없습니다.");
+		}
 	}
 }

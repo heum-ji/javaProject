@@ -2,6 +2,7 @@ package kr.or.iei.view;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 import kr.or.iei.vo.Bronze;
 import kr.or.iei.vo.Gold;
@@ -57,7 +58,7 @@ public class PointView {
 			member = new Silver(grade, name, point);
 		} else if (grade.equals("gold")) {
 			member = new Gold(grade, name, point);
-		} else { // vvip
+		} else { // platinum
 			member = new Platinum(grade, name, point);
 		}
 
@@ -68,7 +69,23 @@ public class PointView {
 	public void printAllMember(HashMap<String, Grade> members) {
 		System.out.println("\n===== 전체 멤버 출력 =====");
 		System.out.println("등급\t이름\t포인트\t보너스");
-		System.out.println(members);
+
+		Set<String> keys = members.keySet(); // 전체 키 추출
+
+		// 전체 키 출력
+		for (String key : keys) {
+			System.out.println(members.get(key));
+		}
+	}
+
+	public void printOneMember(Grade member) {
+		System.out.println("등급\t이름\t포인트\t보너스");
+		System.out.println(member);
+	}
+
+	public String getName(String str) {
+		System.out.print(str + "할 멤버 이름 : ");
+		return sc.next();
 	}
 
 	public void printMsg(String msg) {
