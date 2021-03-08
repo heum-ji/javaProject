@@ -1,16 +1,24 @@
 package kh.java.run;
 
-import kh.java.func.ByteStreamTest;
-import kh.java.func.CharStreamTest;
+import kh.java.func.UserMgr;
 
 public class ioRun {
 
 	public static void main(String[] args) {
-		//ByteStreamTest bst = new ByteStreamTest();
-		//bst.primaryStream();
+		// ByteStreamTest bst = new ByteStreamTest();
+		// bst.primaryStream();
+
+		// CharStreamTest cst = new CharStreamTest();
+		// cst.charStreamReader();
+
+		// StreamTest st = new StreamTest();
+		// st.main();
+
+		// FileTest ft = new FileTest();
+		// ft.fileTest();
 		
-		CharStreamTest cst = new CharStreamTest();
-		cst.main();
+		UserMgr um = new UserMgr();
+		um.main();
 	}
 
 }
