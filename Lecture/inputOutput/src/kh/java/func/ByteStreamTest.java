@@ -40,6 +40,7 @@ public class ByteStreamTest {
 		} finally {
 			try {
 				fis.close();
+				sc.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

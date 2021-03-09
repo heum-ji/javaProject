@@ -36,6 +36,7 @@ public class CharStreamTest {
 		} finally {
 			try {
 				fw.close();
+				sc.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -75,6 +76,7 @@ public class CharStreamTest {
 			try {
 				// 보조 스트림을 닫는 경우 주 스트림은 같이 닫힘
 				bw.close();
+				sc.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -112,6 +114,7 @@ public class CharStreamTest {
 		} finally {
 			try {
 				br.close();
+				sc.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
