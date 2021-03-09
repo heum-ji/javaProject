@@ -10,6 +10,9 @@ public class ClientRun {
 
 		ClientExam ce = new ClientExam();
 		ce.main();
+
+		// ClientExam2 ce2 = new ClientExam2();
+		// ce2.main();
 	}
 
 }
