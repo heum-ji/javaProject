@@ -5,15 +5,18 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
-public class ServerExam {
+public class TcpChatServer {
 
 	public void main() {
-		int port = 7777;
 		ServerSocket server = null;
 		DataInputStream dis = null;
 		DataOutputStream dos = null;
+
+		int port = 5555;
 		Scanner sc = new Scanner(System.in);
 		boolean chatCheck = false;
 		int dnsCount = 0;
@@ -48,6 +51,7 @@ public class ServerExam {
 			} catch (IOException e) {
 				System.out.println("[서버 준비 실패]");
 			}
+
 			try {
 				if (chatCheck) {
 					System.out.println("[서버 준비 완료]");
@@ -62,14 +66,11 @@ public class ServerExam {
 						System.out.print("나 : ");
 						String msg = sc.nextLine();
 
+						dos.writeUTF(msg);
 						if (msg.equals("exit")) {
-							dos.writeUTF(msg);
 							break;
 						}
-						dos.writeUTF(msg);
-
 						String clientMsg = dis.readUTF();
-
 						if (clientMsg.equals("exit")) {
 							System.out.println("채팅이 종료되었습니다.");
 							break;
@@ -126,5 +127,11 @@ public class ServerExam {
 				}
 			}
 		}
+	}
+
+	public String now() {
+		Date time = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("[HH:mm:ss] ");
+		return sdf.format(time);
 	}
 }

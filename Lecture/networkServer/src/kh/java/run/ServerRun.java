@@ -1,6 +1,6 @@
 package kh.java.run;
 
-import kh.java.func.ServerExam;
+import kh.java.func.BaseballServer;
 
 public class ServerRun {
 
@@ -8,8 +8,11 @@ public class ServerRun {
 		// TcpServer ts = new TcpServer();
 		// ts.main();
 
-		ServerExam se = new ServerExam();
-		se.main();
+		// TcpChatServer se = new TcpChatServer();
+		// se.main();
+
+		BaseballServer bs = new BaseballServer();
+		bs.main();
 	}
 
 }

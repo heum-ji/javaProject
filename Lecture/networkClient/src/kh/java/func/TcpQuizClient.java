@@ -3,12 +3,10 @@ package kh.java.func;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ClientExam2 {
+public class TcpQuizClient {
 
 	public void main() {
 		String serverIp = "1.220.236.74";

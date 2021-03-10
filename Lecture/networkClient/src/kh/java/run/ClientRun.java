@@ -1,6 +1,6 @@
 package kh.java.run;
 
-import kh.java.func.ClientExam;
+import kh.java.func.BaseballClient;
 
 public class ClientRun {
 
@@ -8,11 +8,14 @@ public class ClientRun {
 		// TcpClient tc = new TcpClient();
 		// tc.main();
 
-		ClientExam ce = new ClientExam();
-		ce.main();
+		// TcpChatClient ce = new TcpChatClient();
+		// ce.main();
 
 		// ClientExam2 ce2 = new ClientExam2();
 		// ce2.main();
+
+		BaseballClient bc = new BaseballClient();
+		bc.main();
 	}
 
 }

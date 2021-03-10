@@ -4,16 +4,19 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
-public class ClientExam {
+public class TcpChatClient {
 
 	public void main() {
 		Socket socket = null;
 		DataInputStream dis = null;
 		DataOutputStream dos = null;
+
 		String serverIp = "127.0.0.1";
-		int serverPort = 7777;
+		int serverPort = 5555;
 		boolean chatCheck = false;
 		Scanner sc = null;
 
@@ -56,14 +59,15 @@ public class ClientExam {
 				if (chatCheck) {// Chat
 					System.out.println("채팅 서버 접속 완료!!");
 					System.out.println("서버 메시지 대기중...");
+
 					while (true) {
-						String serverMsg = null;
-						serverMsg = dis.readUTF();
+						String serverMsg = dis.readUTF();
 
 						if (!serverMsg.equals("exit")) {
 							System.out.println("[server] : " + serverMsg);
 							System.out.print("나 : ");
 							String msg = sc.nextLine();
+
 							dos.writeUTF(msg);
 							if (msg.equals("exit")) {
 								break;
@@ -99,5 +103,11 @@ public class ClientExam {
 				}
 			}
 		}
+	}
+
+	public String now() {
+		Date time = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("[HH:mm:ss] ");
+		return sdf.format(time);
 	}
 }
