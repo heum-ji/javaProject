@@ -1,21 +1,12 @@
 package kh.java.run;
 
-import kh.java.func.BaseballClient;
+import kh.java.func.UdpClient;
 
 public class ClientRun {
 
 	public static void main(String[] args) {
-		// TcpClient tc = new TcpClient();
-		// tc.main();
-
-		// TcpChatClient ce = new TcpChatClient();
-		// ce.main();
-
-		// ClientExam2 ce2 = new ClientExam2();
-		// ce2.main();
-
-		BaseballClient bc = new BaseballClient();
-		bc.main();
+		UdpClient uc = new UdpClient();
+		uc.main();
 	}
 
 }
